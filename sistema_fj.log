@@ -1,0 +1,65 @@
+
+========================================================================
+  SOFTWARE FJ — Sistema Integral de Gestión
+  Sesión iniciada: 2026-05-10 17:28:21
+========================================================================
+2026-05-10 17:28:21 | INFO    [Cliente] | Cliente creado: Laura Gómez (lgomez@empresa.com) [vip]
+2026-05-10 17:28:21 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Laura Gómez
+2026-05-10 17:28:21 | INFO    [Cliente] | Cliente creado: Carlos Ramírez (c.ramirez@correo.co) [empresarial]
+2026-05-10 17:28:21 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Carlos Ramírez
+2026-05-10 17:28:21 | INFO    [Cliente] | Cliente creado: Sofía Torres (sofia.torres@mail.com) [regular]
+2026-05-10 17:28:21 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Sofía Torres
+2026-05-10 17:28:21 | INFO    [Cliente] | Cliente creado: Laura Copia (lgomez@empresa.com) [regular]
+2026-05-10 17:28:21 | ERROR   [RepositorioClientes] | Intento de duplicado — cliente: lgomez@empresa.com
+2026-05-10 17:28:21 | INFO    [ReservaSala] | ReservaSala creada: 'Sala Innovación' (aforo=20)
+2026-05-10 17:28:21 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Sala Innovación' [D8D73609]
+2026-05-10 17:28:21 | INFO    [AlquilerEquipo] | AlquilerEquipo creado: 'Laptop Dell XPS' [laptop] unidades=5
+2026-05-10 17:28:21 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Laptop Dell XPS' [5287210A]
+2026-05-10 17:28:21 | INFO    [AsesoriaEspecializada] | AsesoriaEspecializada creada: 'Consultoría Arquitectura Cloud' [Tecnología Cloud — principal]
+2026-05-10 17:28:21 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Consultoría Arquitectura Cloud' [552831DF]
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [1E25CA12] creada — Cliente: Laura Gómez | Servicio: Sala Innovación | Duración: 4h
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [1E25CA12] CONFIRMADA — Total: $ 350,336.00 COP
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [58972A1C] creada — Cliente: Carlos Ramírez | Servicio: Laptop Dell XPS | Duración: 24h
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [58972A1C] CONFIRMADA — Total: $ 2,656,680.00 COP
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [25013789] creada — Cliente: Sofía Torres | Servicio: Consultoría Arquitectura Cloud | Duración: 2h
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [25013789] CONFIRMADA — Total: $ 1,442,875.00 COP
+2026-05-10 17:28:21 | ERROR   [Reserva.confirmar] | [ERR_RESERVA_YA_CONFIRMADA] La reserva '1E25CA12' ya fue confirmada anteriormente.
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [6027331B] creada — Cliente: Sofía Torres | Servicio: Sala Innovación | Duración: 2h
+2026-05-10 17:28:21 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [6027331B]: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'personas': '999'. Razón: Excede el aforo máximo de la sala (20).
+  → Traceback (most recent call last):
+  File "/home/claude/sistema_fj/reservas.py", line 144, in confirmar
+    self._desglose_costo = self._servicio.calcular_costo_con_extras(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/sistema_fj/servicios.py", line 304, in calcular_costo_con_extras
+    raise ParametrosServicioInvalidosError(
+excepciones.ParametrosServicioInvalidosError: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'personas': '999'. Razón: Excede el aforo máximo de la sala (20).
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [3481C14C] creada — Cliente: Laura Gómez | Servicio: Laptop Dell XPS | Duración: 8h
+2026-05-10 17:28:21 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [3481C14C]: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'unidades': '100'. Razón: Solo hay 5 unidades disponibles.
+  → Traceback (most recent call last):
+  File "/home/claude/sistema_fj/reservas.py", line 144, in confirmar
+    self._desglose_costo = self._servicio.calcular_costo_con_extras(
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/sistema_fj/servicios.py", line 463, in calcular_costo_con_extras
+    raise ParametrosServicioInvalidosError(
+excepciones.ParametrosServicioInvalidosError: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'unidades': '100'. Razón: Solo hay 5 unidades disponibles.
+2026-05-10 17:28:21 | AVISO   [Reserva] | Reserva [1E25CA12] CANCELADA. Motivo: El cliente solicitó reprogramar.
+2026-05-10 17:28:21 | ERROR   [Reserva.cancelar] | [ERR_RESERVA_CANCELADA] La reserva '1E25CA12' fue cancelada y no puede modificarse.
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [58972A1C] COMPLETADA exitosamente.
+2026-05-10 17:28:21 | ERROR   [Reserva.procesar] | Solo se pueden completar reservas CONFIRMADAS. Estado actual: COMPLETADA.
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [60D11ABF] creada — Cliente: Sofía Torres | Servicio: Sala Innovación | Duración: 1h
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [60D11ABF] CONFIRMADA — Total: $ 109,480.00 COP
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [F04FAC17] creada — Cliente: Carlos Ramírez | Servicio: Consultoría Arquitectura Cloud | Duración: 1h
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [F04FAC17] CONFIRMADA — Total: $ 455,175.00 COP
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [9E55CBF3] creada — Cliente: Laura Gómez | Servicio: Consultoría Arquitectura Cloud | Duración: 1h
+2026-05-10 17:28:21 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [9E55CBF3]: [ERR_SERVICIO_CAPACIDAD_EXCEDIDA] El servicio 'Consultoría Arquitectura Cloud' ha alcanzado su capacidad máxima de 2 reservas simultáneas.
+  → Traceback (most recent call last):
+  File "/home/claude/sistema_fj/reservas.py", line 151, in confirmar
+    self._servicio.ocupar()
+  File "/home/claude/sistema_fj/servicios.py", line 155, in ocupar
+    raise CapacidadExcedidaError(self._nombre, self._capacidad_max)
+excepciones.CapacidadExcedidaError: [ERR_SERVICIO_CAPACIDAD_EXCEDIDA] El servicio 'Consultoría Arquitectura Cloud' ha alcanzado su capacidad máxima de 2 reservas simultáneas.
+2026-05-10 17:28:21 | AVISO   [Servicio] | Servicio 'Sala Innovación' deshabilitado. Mantenimiento programado.
+2026-05-10 17:28:21 | INFO    [Reserva] | Reserva [944FF7F4] creada — Cliente: Laura Gómez | Servicio: Sala Innovación | Duración: 2h
+2026-05-10 17:28:21 | ERROR   [Reserva.confirmar] | No se pudo confirmar reserva [944FF7F4]: servicio no disponible. [ERR_SERVICIO_NO_DISPONIBLE] El servicio 'Sala Innovación' no está disponible. Razón: El servicio está deshabilitado manualmente.
+2026-05-10 17:28:21 | INFO    [Servicio] | Servicio 'Sala Innovación' habilitado.
+2026-05-10 17:28:21 | INFO    [Main] | Sesión de demostración finalizada exitosamente.
