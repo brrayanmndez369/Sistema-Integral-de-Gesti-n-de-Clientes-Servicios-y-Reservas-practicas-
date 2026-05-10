@@ -63,3 +63,94 @@ excepciones.CapacidadExcedidaError: [ERR_SERVICIO_CAPACIDAD_EXCEDIDA] El servici
 2026-05-10 17:28:21 | ERROR   [Reserva.confirmar] | No se pudo confirmar reserva [944FF7F4]: servicio no disponible. [ERR_SERVICIO_NO_DISPONIBLE] El servicio 'Sala Innovación' no está disponible. Razón: El servicio está deshabilitado manualmente.
 2026-05-10 17:28:21 | INFO    [Servicio] | Servicio 'Sala Innovación' habilitado.
 2026-05-10 17:28:21 | INFO    [Main] | Sesión de demostración finalizada exitosamente.
+
+========================================================================
+  SOFTWARE FJ — Sistema Integral de Gestión
+  Sesión iniciada: 2026-05-10 13:43:44
+========================================================================
+
+========================================================================
+  SOFTWARE FJ — Sistema Integral de Gestión
+  Sesión iniciada: 2026-05-10 13:47:17
+========================================================================
+2026-05-10 13:47:17 | INFO    [Cliente] | Cliente creado: Laura Gómez (lgomez@empresa.com) [vip]
+2026-05-10 13:47:17 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Laura Gómez
+2026-05-10 13:47:17 | INFO    [Cliente] | Cliente creado: Carlos Ramírez (c.ramirez@correo.co) [empresarial]
+2026-05-10 13:47:17 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Carlos Ramírez
+2026-05-10 13:47:17 | INFO    [Cliente] | Cliente creado: Sofía Torres (sofia.torres@mail.com) [regular]
+2026-05-10 13:47:17 | INFO    [RepositorioClientes] | Cliente registrado exitosamente: Sofía Torres
+2026-05-10 13:47:17 | INFO    [Cliente] | Cliente creado: Laura Copia (lgomez@empresa.com) [regular]
+2026-05-10 13:47:17 | ERROR   [RepositorioClientes] | Intento de duplicado — cliente: lgomez@empresa.com
+2026-05-10 13:47:17 | INFO    [ReservaSala] | ReservaSala creada: 'Sala Innovación' (aforo=20)
+2026-05-10 13:47:17 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Sala Innovación' [26CF3546]
+2026-05-10 13:47:17 | INFO    [AlquilerEquipo] | AlquilerEquipo creado: 'Laptop Dell XPS' [laptop] unidades=5
+2026-05-10 13:47:17 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Laptop Dell XPS' [3D8F4ACF]
+2026-05-10 13:47:17 | INFO    [AsesoriaEspecializada] | AsesoriaEspecializada creada: 'Consultoría Arquitectura Cloud' [Tecnología Cloud — principal]
+2026-05-10 13:47:17 | INFO    [CatalogoServicios] | Servicio registrado en catálogo: 'Consultoría Arquitectura Cloud' [3B7F3746]
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [E7CF9647] creada — Cliente: Laura Gómez | Servicio: Sala Innovación | Duración: 4h
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [E7CF9647] CONFIRMADA — Total: $ 350,336.00 COP
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [D4E5DF0F] creada — Cliente: Carlos Ramírez | Servicio: Laptop Dell XPS | Duración: 24h
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [D4E5DF0F] CONFIRMADA — Total: $ 2,656,680.00 COP
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [EFA6A3A6] creada — Cliente: Sofía Torres | Servicio: Consultoría Arquitectura Cloud | Duración: 2h
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [EFA6A3A6] CONFIRMADA — Total: $ 1,442,875.00 COP
+2026-05-10 13:47:17 | ERROR   [Reserva.confirmar] | [ERR_RESERVA_YA_CONFIRMADA] La reserva 'E7CF9647' ya fue confirmada anteriormente.
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [30452D43] creada — Cliente: Sofía Torres | Servicio: Sala Innovación | Duración: 2h
+2026-05-10 13:47:17 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [30452D43]: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'personas': '999'. Razón: Excede el aforo máximo de la sala (20).
+  → Traceback (most recent call last):
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\reservas.py", line 144, in confirmar
+    self._desglose_costo = self._servicio.calcular_costo_con_extras(
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        horas=self._duracion,
+        ^^^^^^^^^^^^^^^^^^^^^
+        descuento=descuento_total,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._kwargs,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\servicios.py", line 304, in calcular_costo_con_extras
+    raise ParametrosServicioInvalidosError(
+    ...<2 lines>...
+    )
+excepciones.ParametrosServicioInvalidosError: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'personas': '999'. Razón: Excede el aforo máximo de la sala (20).
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [97C22C38] creada — Cliente: Laura Gómez | Servicio: Laptop Dell XPS | Duración: 8h
+2026-05-10 13:47:17 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [97C22C38]: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'unidades': '100'. Razón: Solo hay 5 unidades disponibles.
+  → Traceback (most recent call last):
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\reservas.py", line 144, in confirmar
+    self._desglose_costo = self._servicio.calcular_costo_con_extras(
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        horas=self._duracion,
+        ^^^^^^^^^^^^^^^^^^^^^
+        descuento=descuento_total,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **self._kwargs,
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\servicios.py", line 463, in calcular_costo_con_extras
+    raise ParametrosServicioInvalidosError(
+    ...<2 lines>...
+    )
+excepciones.ParametrosServicioInvalidosError: [ERR_SERVICIO_PARAMETROS_INVALIDOS] Parámetro de servicio inválido — 'unidades': '100'. Razón: Solo hay 5 unidades disponibles.
+2026-05-10 13:47:17 | AVISO   [Reserva] | Reserva [E7CF9647] CANCELADA. Motivo: El cliente solicitó reprogramar.
+2026-05-10 13:47:17 | ERROR   [Reserva.cancelar] | [ERR_RESERVA_CANCELADA] La reserva 'E7CF9647' fue cancelada y no puede modificarse.
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [D4E5DF0F] COMPLETADA exitosamente.
+2026-05-10 13:47:17 | ERROR   [Reserva.procesar] | Solo se pueden completar reservas CONFIRMADAS. Estado actual: COMPLETADA.
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [1B1A9189] creada — Cliente: Sofía Torres | Servicio: Sala Innovación | Duración: 1h
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [1B1A9189] CONFIRMADA — Total: $ 109,480.00 COP
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [8E3FE92C] creada — Cliente: Carlos Ramírez | Servicio: Consultoría Arquitectura Cloud | Duración: 1h
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [8E3FE92C] CONFIRMADA — Total: $ 455,175.00 COP
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [A61B326F] creada — Cliente: Laura Gómez | Servicio: Consultoría Arquitectura Cloud | Duración: 1h
+2026-05-10 13:47:17 | CRITICO [Reserva.confirmar] | Error inesperado al confirmar reserva [A61B326F]: [ERR_SERVICIO_CAPACIDAD_EXCEDIDA] El servicio 'Consultoría Arquitectura Cloud' ha alcanzado su capacidad máxima de 2 reservas simultáneas.
+  → Traceback (most recent call last):
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\reservas.py", line 151, in confirmar
+    self._servicio.ocupar()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\julia\OneDrive\Escritorio\sistema-fj\servicios.py", line 155, in ocupar
+    raise CapacidadExcedidaError(self._nombre, self._capacidad_max)
+excepciones.CapacidadExcedidaError: [ERR_SERVICIO_CAPACIDAD_EXCEDIDA] El servicio 'Consultoría Arquitectura Cloud' ha alcanzado su capacidad máxima de 2 reservas simultáneas.
+2026-05-10 13:47:17 | AVISO   [Servicio] | Servicio 'Sala Innovación' deshabilitado. Mantenimiento programado.
+2026-05-10 13:47:17 | INFO    [Reserva] | Reserva [C86C5C44] creada — Cliente: Laura Gómez | Servicio: Sala Innovación | Duración: 2h
+2026-05-10 13:47:17 | ERROR   [Reserva.confirmar] | No se pudo confirmar reserva [C86C5C44]: servicio no disponible. [ERR_SERVICIO_NO_DISPONIBLE] El servicio 'Sala Innovación' no está disponible. Razón: El servicio está deshabilitado manualmente.
+2026-05-10 13:47:17 | INFO    [Servicio] | Servicio 'Sala Innovación' habilitado.
+2026-05-10 13:47:17 | INFO    [Main] | Sesión de demostración finalizada exitosamente.
