@@ -5,36 +5,42 @@ Módulo de excepciones personalizadas para el Sistema Integral de Gestión
 de Software FJ.
 """
 
-
 class SistemaFJError(Exception):
-    """Excepción base del sistema. Todas las excepciones personalizadas
-    heredan de esta clase."""
+    """Excepción base del sistema."""
 
-    def __init__(self, mensaje: str, codigo: str = "ERR_GENERAL"):
+    def __init__(
+        self,
+        mensaje: str,
+        codigo: str = "ERR_GENERAL"
+    ) -> None:
+
         super().__init__(mensaje)
         self.mensaje = mensaje
         self.codigo = codigo
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"[{self.codigo}] {self.mensaje}"
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(codigo='{self.codigo}')"
 
 # ── Excepciones de Cliente ────────────────────────────────────────────────────
 
 class ClienteError(SistemaFJError):
-    """Error genérico relacionado con clientes."""
-    def __init__(self, mensaje: str):
-        super().__init__(mensaje, "ERR_CLIENTE")
-
+    def __init__(
+        self,
+        mensaje: str,
+        codigo: str = "ERR_CLIENTE"
+    ):
+        super().__init__(mensaje, codigo)
 
 class ClienteYaExisteError(ClienteError):
-    """Se intenta registrar un cliente con un ID o correo ya existente."""
     def __init__(self, identificador: str):
         super().__init__(
-            f"El cliente con identificador '{identificador}' ya existe en el sistema."
+            f"El cliente con identificador '{identificador}' ya existe.",
+            "ERR_CLIENTE_DUPLICADO"
         )
-        self.codigo = "ERR_CLIENTE_DUPLICADO"
-
+        
 
 class ClienteNoEncontradoError(ClienteError):
     """El cliente solicitado no existe en el sistema."""
