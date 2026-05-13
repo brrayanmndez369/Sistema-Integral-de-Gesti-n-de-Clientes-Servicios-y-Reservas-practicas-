@@ -109,3 +109,18 @@ Uso de métodos abstractos mediante abstractmethod.
 ## Conclusiones
 El proyecto permitió aplicar conceptos avanzados de programación
 orientada a objetos mediante un sistema modular y escalable.
+
+```mermaid
+classDiagram
+
+    class Servicio {
+        +calcular_costo()
+        +calcular_costo_con_extras()
+        +describir()
+        +validar()
+    }
+
+    Servicio <|-- ReservaSala
+    Servicio <|-- AlquilerEquipo
+    Servicio <|-- AsesoriaEspecializada
+```
