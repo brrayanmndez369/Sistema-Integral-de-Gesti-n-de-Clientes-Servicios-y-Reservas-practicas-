@@ -134,3 +134,15 @@ classDiagram
 - Herencia
 - Validaciones defensivas
 - Manejo de excepciones personalizadas
+
+- ```mermaid
+classDiagram
+
+    SistemaFJError <|-- ClienteError
+    SistemaFJError <|-- ServicioError
+    SistemaFJError <|-- ReservaError
+    SistemaFJError <|-- CalculoError
+
+    ClienteError <|-- ClienteYaExisteError
+    ClienteError <|-- ClienteNoEncontradoError
+```
