@@ -238,18 +238,28 @@ class Cliente(Entidad):
             f"  Activo    : {'Sí' if self._activo else 'No'}"
         )
 
-    def validar(self) -> bool:
-        """
-        Valida que todos los campos requeridos estén presentes y sean coherentes.
-        Retorna True si la entidad es válida, False en caso contrario.
-        """
-        try:
-            assert self._nombre and len(self._nombre) >= 2
-            assert self._apellido and len(self._apellido) >= 2
-            assert self._PATRON_CORREO.match(self._correo)
-            assert self._PATRON_TELEFONO.match(self._telefono)
-            assert self._tipo_cliente in self.TIPOS_VALIDOS
-            return True
+def validar(self) -> bool:
+    """
+    Valida que todos los campos requeridos estén presentes y sean coherentes.
+    Retorna True si la entidad es válida, False en caso contrario.
+    """
+
+    if not self._nombre or len(self._nombre) < 2:
+        return False
+
+    if not self._apellido or len(self._apellido) < 2:
+        return False
+
+    if not self._PATRON_CORREO.match(self._correo):
+        return False
+
+    if not self._PATRON_TELEFONO.match(self._telefono):
+        return False
+
+    if self._tipo_cliente not in self.TIPOS_VALIDOS:
+        return False
+
+    return True
         except AssertionError:
             return False
 
