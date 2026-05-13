@@ -124,3 +124,13 @@ classDiagram
     Servicio <|-- AlquilerEquipo
     Servicio <|-- AsesoriaEspecializada
 ```
+
+## Patrones y conceptos implementados
+
+- Repository Pattern
+- Encapsulamiento
+- Abstracción
+- Polimorfismo
+- Herencia
+- Validaciones defensivas
+- Manejo de excepciones personalizadas
